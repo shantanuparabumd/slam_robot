@@ -2,16 +2,17 @@
 
 import rclpy
 from rclpy.node import Node
+from geometry_msgs.msg import Twist
+from std_msgs.msg import Float64MultiArray
 from sensor_msgs.msg import JointState
 import sys
 import select
 import tty
 import termios
 from pynput import keyboard
-from geometry_msgs.msg import Twist
 
 # Define key codes
-LIN_VEL_STEP_SIZE = 10
+LIN_VEL_STEP_SIZE = 0.1
 ANG_VEL_STEP_SIZE = 0.1
 
 class KeyboardControlNode(Node):
@@ -19,7 +20,7 @@ class KeyboardControlNode(Node):
     def __init__(self):
         super().__init__('keyboard_control_node')
 
-        self.vel_pub = self.create_publisher(Twist, '/turtlebot3/cmd_vel', 10)
+        self.vel_pub = self.create_publisher(Twist, '/cmd_vel', 10)
 
         self.settings = termios.tcgetattr(sys.stdin)
 
@@ -48,7 +49,6 @@ class KeyboardControlNode(Node):
         """
 
         self.get_logger().info(self.msg)
-        # Create a Twist message
         twist_msg = Twist()
         
         linear_vel=0.0
@@ -83,7 +83,6 @@ class KeyboardControlNode(Node):
                 # Publish the twist message
                 twist_msg.linear.x = linear_vel
                 twist_msg.angular.z = steer_angle
-
                 self.vel_pub.publish(twist_msg)
 
 def main(args=None):

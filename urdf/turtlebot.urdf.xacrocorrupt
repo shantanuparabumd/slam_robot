@@ -1,0 +1,410 @@
+<?xml version="1.0" ?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="turtlebot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="body_color">
+      <visual>
+      <material>
+          <ambient>0.752941176470588 1 0.752941176470588 1</ambient>
+          <diffuse>0.752941176470588 1 0.752941176470588 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0 0 0 0</emissive>
+      </material>
+      </visual>
+  </xacro:macro>
+
+  <xacro:macro name="wheel_color">
+      <visual>
+      <material>
+          <ambient>0 0 0 1</ambient>
+          <diffuse>0 0 0 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0 0 0 0</emissive>
+      </material>
+      </visual>
+  </xacro:macro>
+
+  <xacro:macro name="camera_color">
+      <visual>
+      <material>
+          <ambient>0.250980392156863 0.250980392156863 0.250980392156863 1</ambient>
+          <diffuse>0.250980392156863 0.250980392156863 0.250980392156863 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0 0 0 0</emissive>
+      </material>
+      </visual>
+  </xacro:macro>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-2.19065333582868E-11 -7.91162099286828E-10 0.0517718491798418"
+        rpy="0 0 0" />
+      <mass
+        value="0.602560315596927" />
+      <inertia
+        ixx="0.0019183316981398"
+        ixy="1.12593516866759E-11"
+        ixz="-3.16471895451672E-13"
+        iyy="0.00182425493094387"
+        iyz="-1.18443100071739E-11"
+        izz="0.00176728421405667" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://slam_robot/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 1 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://slam_robot/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="lidar_link">
+    <inertial>
+      <origin
+        xyz="2.79823572234202E-17 2.79823572234205E-17 0.015"
+        rpy="0 0 0" />
+      <mass
+        value="0.115453530019425" />
+      <inertia
+        ixx="4.40166583199058E-05"
+        ixy="6.7762635780344E-21"
+        ixz="6.59149132545472E-20"
+        iyy="4.40166583199058E-05"
+        iyz="6.59149132545479E-20"
+        izz="7.07152871368978E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://slam_robot/meshes/lidar_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://slam_robot/meshes/lidar_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lidar_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0.11"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="lidar_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="camera_link">
+    <inertial>
+      <origin
+        xyz="-0.00500000000000002 0 -1.38777878078145E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.001" />
+      <inertia
+        ixx="1.66666666666667E-08"
+        ixy="-1.65436122510606E-24"
+        ixz="-1.14436069195601E-24"
+        iyy="1.66666666666667E-08"
+        iyz="-3.74106218370646E-25"
+        izz="1.66666666666667E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://slam_robot/meshes/camera_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.250980392156863 0.250980392156863 0.250980392156863 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://slam_robot/meshes/camera_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="camera_joint"
+    type="fixed">
+    <origin
+      xyz="0.0700000000000002 0 0.0649999999999998"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="camera_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_wheel_link">
+    <inertial>
+      <origin
+        xyz="-6.24500451351651E-17 0.0099904214559387 -2.42861286636753E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0768708452425253" />
+      <inertia
+        ixx="2.61315090669255E-05"
+        ixy="-1.16043513773839E-19"
+        ixz="-2.3609709236418E-21"
+        iyy="4.71432179617743E-05"
+        iyz="-6.48093914451185E-20"
+        izz="2.61315090669255E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://slam_robot/meshes/right_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://slam_robot/meshes/right_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.1 0.0200000000000002"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_wheel_link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="left_wheel_link">
+    <inertial>
+      <origin
+        xyz="-6.80011602582908E-16 0.190009578544061 -4.16333634234434E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0768708452425252" />
+      <inertia
+        ixx="2.61315090669254E-05"
+        ixy="-7.6232965252887E-21"
+        ixz="1.49610355232439E-22"
+        iyy="4.71432179617743E-05"
+        iyz="3.17533111941013E-20"
+        izz="2.61315090669255E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://slam_robot/meshes/left_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://slam_robot/meshes/left_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.1 0.0200000000000002"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_wheel_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <gazebo reference="base_link">
+    <xacro:body_color />
+  </gazebo>
+  <gazebo reference="lidar_link">
+      <xacro:wheel_color />
+  </gazebo>
+  <gazebo reference="right_wheel_link">
+      <xacro:wheel_color />
+  </gazebo>
+  <gazebo reference="left_wheel_link">
+      <xacro:wheel_color />
+  </gazebo>
+  <gazebo reference="camera_link">
+      <xacro:camera_color />
+  </gazebo>
+
+  <gazebo reference="lidar_link">
+  <sensor name="lidar" type="ray">
+    
+    <always_on>true</always_on>
+    <visualize>true</visualize>
+    <update_rate>5</update_rate>
+    <ray>
+      <scan>
+        <horizontal>
+          <samples>360</samples>
+          <resolution>1.00000</resolution>
+          <min_angle>0.000000</min_angle>
+          <max_angle>6.280000</max_angle>
+        </horizontal>
+      </scan>
+      <range>
+        <min>0.120000</min>
+        <max>3.5</max>
+        <resolution>0.015000</resolution>
+      </range>
+      <noise>
+        <type>gaussian</type>
+        <mean>0.0</mean>
+        <stddev>0.01</stddev>
+      </noise>
+    </ray>
+    <plugin name="scan_2" filename="libgazebo_ros_ray_sensor.so">
+      <ros>
+        <remapping>~/out:=scan</remapping>
+      </ros>
+      <output_type>sensor_msgs/LaserScan</output_type>
+      <frame_name>lidar_link</frame_name>
+    </plugin>
+  </sensor>
+  </gazebo>
+
+  <!-- Adding Controllers -->
+  <ros2_control name="GazeboSystem" type="system">
+  <hardware>
+    <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+  </hardware>
+  <joint name="right_wheel_joint">
+    <command_interface name="velocity">
+        <param name="min">-1000.0</param>
+        <param name="max">1000.0</param>
+    </command_interface>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+  <joint name="left_wheel_joint">
+    <command_interface name="velocity">
+        <param name="min">-1000.0</param>
+        <param name="max">1000.0</param>
+    </command_interface>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+  
+  </ros2_control>
+
+
+  <gazebo>
+      <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+        <parameters>$(find slam_robot)/config/control.yaml</parameters>
+      </plugin>
+  </gazebo>
+
+  <gazebo reference="camera_link">
+    <sensor type="camera" name="camera_sensor">
+      <pose>0.0 0 0.0 0.0 0.0 0.707</pose>
+      <visualize>true</visualize>
+      <update_rate>30.0</update_rate>
+      <camera name="camera">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>/prius/front_camera</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>/camera/camera_info</cameraInfoTopicName>
+        <frameName>camera_link</frameName>
+    
+      </plugin>
+    </sensor>
+  </gazebo>
+
+</robot>

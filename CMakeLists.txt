@@ -30,13 +30,16 @@ install(DIRECTORY
   launch
   worlds
   urdf
+  meshes
+  config
   models
-  rviz
   DESTINATION share/${PROJECT_NAME}/
 )
 
 install(
   PROGRAMS
+  scripts/key_board.py
+  launch/robot_description_publisher.py
   scripts/key_board.py
   DESTINATION lib/${PROJECT_NAME}
 )

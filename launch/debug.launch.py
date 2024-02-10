@@ -7,6 +7,9 @@ from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription,ExecuteProcess,RegisterEventHandler
 from launch.event_handlers import OnProcessExit
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch_ros.substitutions import FindPackageShare
+from launch.substitutions import  PathJoinSubstitution
+from launch_ros.actions import Node
 
 
 def generate_launch_description():
@@ -16,7 +19,7 @@ def generate_launch_description():
 
     # Get the location for empty world
     world = os.path.join(
-        get_package_share_directory('slam_robot'),
+        get_package_share_directory('project_legion'),
         'worlds',
         'empty_world.world'
     )
@@ -37,7 +40,7 @@ def generate_launch_description():
     )
 
     # Get the package directory 
-    pkg_robotaxi_gazebo = get_package_share_directory('slam_robot')
+    pkg_robotaxi_gazebo = get_package_share_directory('project_legion')
 
    
 
@@ -49,6 +52,18 @@ def generate_launch_description():
         )
     )
 
+     # RVIZ Configuration
+    rviz_config_dir = PathJoinSubstitution(
+        [FindPackageShare("project_legion"), "rviz", "display_default.rviz"]
+    )
+
+    rviz_node = Node(
+        package='rviz2',
+        executable='rviz2',
+        output='screen',
+        name='rviz_node',
+        parameters=[{'use_sim_time': True}],
+        arguments=['-d', rviz_config_dir])
 
     
 
@@ -56,6 +71,7 @@ def generate_launch_description():
     return LaunchDescription([
         gzserver_cmd,
         gzclient_cmd,
-        spawn_robot_world
+        spawn_robot_world,
+        rviz_node
         
     ])
