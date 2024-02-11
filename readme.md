@@ -5,6 +5,8 @@
 [![codecov](https://codecov.io/gh/shantanuparabumd/project_legion/graph/badge.svg?token=WS0I96DIDU)](https://codecov.io/gh/shantanuparabumd/project_legion)
 [![project_legion_build](https://github.com/shantanuparabumd/project_legion/actions/workflows/project_legion_git_ci.yml/badge.svg)](https://github.com/shantanuparabumd/project_legion/actions/workflows/project_legion_git_ci.yml) -->
 
+[video3.webm](https://github.com/shantanuparabumd/slam_robot/assets/112659509/1bde4389-47e0-40a3-b85d-59b8568c6092)
+
 
 
 ## Authors
@@ -33,6 +35,7 @@ Exploring Particle Filter for Localization: As part of our exploration, we exper
 
 
 
+[video4.webm](https://github.com/shantanuparabumd/slam_robot/assets/112659509/bd74f3c4-9372-42b1-b22e-2ff7911210e6)
 
 
 
