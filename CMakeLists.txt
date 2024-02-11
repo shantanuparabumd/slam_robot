@@ -38,9 +38,9 @@ install(DIRECTORY
 
 install(
   PROGRAMS
-  scripts/key_board.py
   launch/robot_description_publisher.py
   scripts/key_board.py
+  scripts/slam_map.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
